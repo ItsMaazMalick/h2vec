@@ -14,17 +14,7 @@ const sizeMap = {
   xl: "w-20 h-20 text-xl",
 };
 
-function getInitials(name: string) {
-  return name
-    .split(" ")
-    .slice(0, 2)
-    .map((n) => n[0])
-    .join("")
-    .toUpperCase();
-}
-
-// Deterministic color from name
-const COLORS = [
+const GRADIENTS = [
   "from-violet-500 to-indigo-600",
   "from-indigo-500 to-blue-600",
   "from-teal-500 to-cyan-600",
@@ -33,40 +23,32 @@ const COLORS = [
   "from-amber-500 to-orange-600",
 ];
 
-function colorForName(name: string): string {
-  let hash = 0;
-  for (let i = 0; i < name.length; i++) {
-    hash = (hash + name.charCodeAt(i)) % COLORS.length;
-  }
-  return COLORS[hash];
+function getInitials(name: string) {
+  return name.split(" ").slice(0, 2).map((n) => n[0]).join("").toUpperCase();
+}
+
+function gradientFor(name: string) {
+  let h = 0;
+  for (let i = 0; i < name.length; i++) h = (h + name.charCodeAt(i)) % GRADIENTS.length;
+  return GRADIENTS[h];
 }
 
 export function Avatar({ name, src, size = "md", className }: AvatarProps) {
-  const initials = getInitials(name);
-  const gradient = colorForName(name);
-
   if (src) {
-    return (
-      // eslint-disable-next-line @next/next/no-img-element
-      <img
-        src={src}
-        alt={name}
-        className={cn("rounded-full object-cover", sizeMap[size], className)}
-      />
-    );
+    // eslint-disable-next-line @next/next/no-img-element
+    return <img src={src} alt={name} className={cn("rounded-full object-cover", sizeMap[size], className)} />;
   }
-
   return (
     <div
       className={cn(
-        `bg-gradient-to-br ${gradient}`,
-        "rounded-full flex items-center justify-center font-semibold text-white flex-shrink-0",
+        "rounded-full flex items-center justify-center font-semibold text-white shrink-0 bg-linear-to-br",
+        gradientFor(name),
         sizeMap[size],
         className
       )}
       aria-label={name}
     >
-      {initials}
+      {getInitials(name)}
     </div>
   );
 }

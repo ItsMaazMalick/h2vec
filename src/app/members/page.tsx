@@ -16,7 +16,7 @@ function MemberCard({ member, i }: { member: Member; i: number }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: i * 0.07, duration: 0.4 }}
-      className="card-base rounded-xl p-6 flex flex-col"
+      className="card-static rounded-xl p-6 flex flex-col"
     >
       <div className="flex items-start gap-4 mb-4">
         <Avatar name={member.name} size="lg" />
@@ -93,7 +93,7 @@ export default function MembersPage() {
     <div className="min-h-screen">
       {/* Hero */}
       <div className="border-b border-[var(--border)] bg-[var(--surface)]">
-        <div className="container-page pt-28 pb-14">
+        <div className="page-container pt-28 pb-14">
           <SectionHeader
             align="left"
             eyebrow="The Team"
@@ -104,8 +104,8 @@ export default function MembersPage() {
       </div>
 
       {/* Mission */}
-      <section className="section-padding">
-        <div className="container-page">
+      <section className="section-py">
+        <div className="page-container">
           <div className="max-w-3xl mx-auto text-center">
             <p className="text-xs font-semibold tracking-widest uppercase text-[var(--accent)] mb-4">
               Our Mission
@@ -126,8 +126,8 @@ export default function MembersPage() {
       </section>
 
       {/* Founders */}
-      <section className="section-padding bg-[var(--surface)] border-t border-[var(--border)]">
-        <div className="container-page">
+      <section className="section-py bg-[var(--surface)] border-t border-[var(--border)]">
+        <div className="page-container">
           <SectionHeader
             align="left"
             eyebrow="Leadership"
@@ -143,8 +143,8 @@ export default function MembersPage() {
       </section>
 
       {/* Core Team */}
-      <section className="section-padding border-t border-[var(--border)]">
-        <div className="container-page">
+      <section className="section-py border-t border-[var(--border)]">
+        <div className="page-container">
           <SectionHeader
             align="left"
             eyebrow="Core Team"
@@ -160,8 +160,8 @@ export default function MembersPage() {
       </section>
 
       {/* Collaborators */}
-      <section className="section-padding bg-[var(--surface)] border-t border-[var(--border)]">
-        <div className="container-page">
+      <section className="section-py bg-[var(--surface)] border-t border-[var(--border)]">
+        <div className="page-container">
           <SectionHeader
             align="left"
             eyebrow="Network"
@@ -178,9 +178,9 @@ export default function MembersPage() {
       </section>
 
       {/* Join CTA */}
-      <section className="section-padding border-t border-[var(--border)]">
-        <div className="container-page">
-          <div className="card-base rounded-2xl p-10 md:p-14 text-center max-w-2xl mx-auto">
+      <section className="section-py border-t border-[var(--border)]">
+        <div className="page-container">
+          <div className="card-static rounded-2xl p-10 md:p-14 text-center max-w-2xl mx-auto">
             <p className="text-xs font-semibold tracking-widest uppercase text-[var(--accent)] mb-3">
               Open Positions
             </p>

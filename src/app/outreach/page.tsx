@@ -58,7 +58,7 @@ export default function OutreachPage() {
     <div className="min-h-screen">
       {/* Hero */}
       <div className="border-b border-[var(--border)] bg-[var(--surface)]">
-        <div className="container-page pt-28 pb-14">
+        <div className="page-container pt-28 pb-14">
           <SectionHeader
             align="left"
             eyebrow="Community"
@@ -69,8 +69,8 @@ export default function OutreachPage() {
       </div>
 
       {/* Programs */}
-      <section className="section-padding">
-        <div className="container-page">
+      <section className="section-py">
+        <div className="page-container">
           <SectionHeader
             eyebrow="Initiatives"
             title="Active Programs"
@@ -86,7 +86,7 @@ export default function OutreachPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08, duration: 0.4 }}
-                className="card-base rounded-xl p-6"
+                className="card-static rounded-xl p-6"
               >
                 <div className="text-3xl mb-4">
                   {program.icon === "award" ? "🏆" : program.icon === "graduation-cap" ? "🎓" : program.icon === "database" ? "🗄️" : "👥"}
@@ -116,8 +116,8 @@ export default function OutreachPage() {
       </section>
 
       {/* Events */}
-      <section className="section-padding bg-[var(--surface)] border-t border-[var(--border)]">
-        <div className="container-page">
+      <section className="section-py bg-[var(--surface)] border-t border-[var(--border)]">
+        <div className="page-container">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
             <SectionHeader
               align="left"
@@ -154,7 +154,7 @@ export default function OutreachPage() {
                   exit={{ opacity: 0, scale: 0.97 }}
                   transition={{ delay: i * 0.06, duration: 0.3 }}
                   className={cn(
-                    "card-base rounded-xl p-6 flex flex-col",
+                    "card-static rounded-xl p-6 flex flex-col",
                     event.status === "past" && "opacity-70"
                   )}
                 >
@@ -219,8 +219,8 @@ export default function OutreachPage() {
       </section>
 
       {/* Registration Form */}
-      <section id="register-form" className="section-padding border-t border-[var(--border)]">
-        <div className="container-page">
+      <section id="register-form" className="section-py border-t border-[var(--border)]">
+        <div className="page-container">
           <div className="max-w-2xl mx-auto">
             <SectionHeader
               eyebrow="Join Outreach"
@@ -229,7 +229,7 @@ export default function OutreachPage() {
               className="mb-10"
             />
 
-            <div className="card-base rounded-2xl p-8">
+            <div className="card-static rounded-2xl p-8">
               {formSubmitted ? (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.95 }}

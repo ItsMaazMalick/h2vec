@@ -3,7 +3,7 @@
 import { useState, useMemo } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, Clock, User, ArrowRight, Filter } from "lucide-react";
+import { Search, Clock, User } from "lucide-react";
 import { researchPosts, researchCategories } from "@/data/research";
 import { Badge } from "@/components/ui/Badge";
 import { SectionHeader } from "@/components/ui/SectionHeader";
@@ -12,29 +12,28 @@ import { cn } from "@/lib/utils";
 import type { ResearchCategory } from "@/data/research";
 
 export default function ResearchPage() {
-  const [query, setQuery] = useState("");
+  const [query, setQuery]                   = useState("");
   const [activeCategory, setActiveCategory] = useState<ResearchCategory | "All">("All");
 
   const filtered = useMemo(() => {
-    return researchPosts.filter((post) => {
-      const matchesCategory =
-        activeCategory === "All" || post.category === activeCategory;
-      const q = query.toLowerCase();
+    const q = query.toLowerCase();
+    return researchPosts.filter((p) => {
+      const matchesCat   = activeCategory === "All" || p.category === activeCategory;
       const matchesQuery =
         !q ||
-        post.title.toLowerCase().includes(q) ||
-        post.excerpt.toLowerCase().includes(q) ||
-        post.tags.some((t) => t.includes(q)) ||
-        post.author.name.toLowerCase().includes(q);
-      return matchesCategory && matchesQuery;
+        p.title.toLowerCase().includes(q) ||
+        p.excerpt.toLowerCase().includes(q) ||
+        p.tags.some((t) => t.includes(q)) ||
+        p.author.name.toLowerCase().includes(q);
+      return matchesCat && matchesQuery;
     });
   }, [query, activeCategory]);
 
   return (
-    <div className="min-h-screen">
-      {/* Page Header */}
-      <div className="border-b border-[var(--border)] bg-[var(--surface)]">
-        <div className="container-page pt-28 pb-12">
+    <div className="min-h-screen bg-background">
+      {/* Page header */}
+      <div className="border-b border-border bg-surface">
+        <div className="w-full max-w-7xl mx-auto px-6 pt-28 pb-12">
           <SectionHeader
             align="left"
             eyebrow="Research"
@@ -42,42 +41,29 @@ export default function ResearchPage() {
             description="Technical research, dataset papers, and deep-dives from the H2Vec research community."
           />
 
-          {/* Search + Filter Row */}
-          <div className="mt-8 flex flex-col sm:flex-row gap-3">
-            <div className="relative flex-1 max-w-md">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--muted)]" />
-              <input
-                type="text"
-                placeholder="Search publications..."
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2.5 rounded-lg bg-[var(--surface-raised)] border border-[var(--border)] text-sm text-[var(--foreground)] placeholder:text-[var(--muted)] focus:outline-none focus:border-[var(--accent)] transition-colors"
-              />
-            </div>
+          {/* Search */}
+          <div className="mt-8 relative max-w-md">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted" />
+            <input
+              type="text"
+              placeholder="Search publications…"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              className="w-full pl-10 pr-4 py-2.5 rounded-lg bg-surface-raised border border-border text-sm text-foreground placeholder:text-muted focus:outline-none focus:border-accent transition-colors"
+            />
           </div>
 
-          {/* Category Filters */}
+          {/* Category pills */}
           <div className="mt-4 flex flex-wrap gap-2">
-            <button
-              onClick={() => setActiveCategory("All")}
-              className={cn(
-                "px-3 py-1.5 rounded-full text-xs font-medium transition-colors border",
-                activeCategory === "All"
-                  ? "bg-[var(--accent)] text-white border-[var(--accent)]"
-                  : "border-[var(--border)] text-[var(--muted-fg)] hover:border-[var(--muted)] hover:text-[var(--foreground)]"
-              )}
-            >
-              All
-            </button>
-            {researchCategories.map((cat) => (
+            {(["All", ...researchCategories] as const).map((cat) => (
               <button
                 key={cat}
-                onClick={() => setActiveCategory(cat)}
+                onClick={() => setActiveCategory(cat as ResearchCategory | "All")}
                 className={cn(
-                  "px-3 py-1.5 rounded-full text-xs font-medium transition-colors border",
+                  "px-3 py-1.5 rounded-full text-xs font-medium border transition-colors",
                   activeCategory === cat
-                    ? "bg-[var(--accent)] text-white border-[var(--accent)]"
-                    : "border-[var(--border)] text-[var(--muted-fg)] hover:border-[var(--muted)] hover:text-[var(--foreground)]"
+                    ? "bg-accent text-white border-accent"
+                    : "border-border text-muted-fg hover:border-muted hover:text-foreground"
                 )}
               >
                 {cat}
@@ -88,12 +74,10 @@ export default function ResearchPage() {
       </div>
 
       {/* Results */}
-      <div className="container-page py-12">
-        <div className="flex items-center justify-between mb-6">
-          <p className="text-sm text-[var(--muted-fg)]">
-            {filtered.length} publication{filtered.length !== 1 ? "s" : ""}
-          </p>
-        </div>
+      <div className="w-full max-w-7xl mx-auto px-6 py-12">
+        <p className="text-sm text-muted-fg mb-6">
+          {filtered.length} publication{filtered.length !== 1 ? "s" : ""}
+        </p>
 
         <AnimatePresence mode="popLayout">
           {filtered.length === 0 ? (
@@ -101,17 +85,14 @@ export default function ResearchPage() {
               key="empty"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="text-center py-24 text-[var(--muted-fg)]"
+              className="text-center py-24"
             >
-              <Search className="w-10 h-10 mx-auto mb-4 opacity-30" />
-              <p className="font-medium text-[var(--foreground)]">No results found</p>
-              <p className="text-sm mt-1">Try adjusting your search or filters</p>
+              <Search className="w-10 h-10 mx-auto mb-4 text-muted opacity-40" />
+              <p className="font-medium text-foreground">No results found</p>
+              <p className="text-sm mt-1 text-muted-fg">Try adjusting your search or filters</p>
             </motion.div>
           ) : (
-            <motion.div
-              key="grid"
-              className="grid md:grid-cols-2 lg:grid-cols-3 gap-4"
-            >
+            <motion.div key="grid" className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
               {filtered.map((post, i) => (
                 <motion.div
                   key={post.id}
@@ -123,41 +104,32 @@ export default function ResearchPage() {
                 >
                   <Link
                     href={`/research/${post.slug}`}
-                    className="group block card-base card-hover p-6 h-full rounded-xl"
+                    className="group flex flex-col h-full bg-surface border border-border rounded-xl p-6 hover:border-accent transition-colors"
                   >
                     <div className="flex items-center justify-between mb-4">
                       <Badge variant="accent">{post.category}</Badge>
-                      {post.featured && (
-                        <Badge variant="teal" size="sm">Featured</Badge>
-                      )}
+                      {post.featured && <Badge variant="teal" size="sm">Featured</Badge>}
                     </div>
 
-                    <h2 className="font-semibold text-[var(--foreground)] leading-snug mb-3 group-hover:text-[var(--accent-fg)] transition-colors line-clamp-3">
+                    <h2 className="font-semibold text-foreground leading-snug mb-3 group-hover:text-accent-fg transition-colors line-clamp-3">
                       {post.title}
                     </h2>
-
-                    <p className="text-sm text-[var(--muted-fg)] leading-relaxed line-clamp-3 mb-4">
+                    <p className="text-sm text-muted-fg leading-relaxed line-clamp-3 mb-4 grow">
                       {post.excerpt}
                     </p>
 
                     <div className="flex flex-wrap gap-1.5 mb-4">
                       {post.tags.slice(0, 3).map((tag) => (
-                        <Badge key={tag} variant="outline" size="sm">
-                          #{tag}
-                        </Badge>
+                        <Badge key={tag} variant="outline" size="sm">#{tag}</Badge>
                       ))}
                     </div>
 
-                    <div className="mt-auto pt-4 border-t border-[var(--border-subtle)] flex items-center justify-between">
-                      <div className="flex items-center gap-1.5 text-xs text-[var(--muted)]">
-                        <User className="w-3.5 h-3.5" />
-                        <span className="truncate max-w-[120px]">{post.author.name}</span>
-                      </div>
-                      <div className="flex items-center gap-3 text-xs text-[var(--muted)]">
-                        <span className="flex items-center gap-1">
-                          <Clock className="w-3 h-3" />
-                          {post.readTimeMinutes}m
-                        </span>
+                    <div className="pt-4 border-t border-border-subtle flex items-center justify-between">
+                      <span className="flex items-center gap-1.5 text-xs text-muted max-w-30 truncate">
+                        <User className="w-3.5 h-3.5 shrink-0" />{post.author.name}
+                      </span>
+                      <div className="flex items-center gap-3 text-xs text-muted shrink-0">
+                        <span className="flex items-center gap-1"><Clock className="w-3 h-3" />{post.readTimeMinutes}m</span>
                         <span>{formatDate(post.publishedAt)}</span>
                       </div>
                     </div>

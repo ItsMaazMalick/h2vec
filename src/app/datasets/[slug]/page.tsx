@@ -69,7 +69,7 @@ export default async function DatasetDetailPage({ params }: Props) {
 
   return (
     <div className="min-h-screen pt-20">
-      <div className="container-page py-12">
+      <div className="page-container py-12">
         {/* Back */}
         <Link
           href="/datasets"
@@ -83,7 +83,7 @@ export default async function DatasetDetailPage({ params }: Props) {
           {/* Main Content */}
           <div className="lg:col-span-2">
             {/* Header */}
-            <div className="card-base rounded-2xl p-8 mb-6">
+            <div className="card-static rounded-2xl p-8 mb-6">
               <div className="flex items-start gap-4 mb-6">
                 <div className="w-14 h-14 rounded-xl bg-[var(--accent-subtle)] flex items-center justify-center flex-shrink-0">
                   <Database className="w-7 h-7 text-[var(--accent)]" />
@@ -131,7 +131,7 @@ export default async function DatasetDetailPage({ params }: Props) {
 
             {/* Format + Source */}
             <div className="grid sm:grid-cols-2 gap-4 mb-6">
-              <div className="card-base rounded-xl p-5">
+              <div className="card-static rounded-xl p-5">
                 <h3 className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-3">
                   File Formats
                 </h3>
@@ -141,7 +141,7 @@ export default async function DatasetDetailPage({ params }: Props) {
                   ))}
                 </div>
               </div>
-              <div className="card-base rounded-xl p-5">
+              <div className="card-static rounded-xl p-5">
                 <h3 className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-3">
                   Data Source
                 </h3>
@@ -150,7 +150,7 @@ export default async function DatasetDetailPage({ params }: Props) {
             </div>
 
             {/* Authors */}
-            <div className="card-base rounded-xl p-5">
+            <div className="card-static rounded-xl p-5">
               <h3 className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-4">
                 Authors & Contributors
               </h3>
@@ -179,7 +179,7 @@ export default async function DatasetDetailPage({ params }: Props) {
 
           {/* Sidebar Metadata */}
           <div className="lg:col-span-1">
-            <div className="card-base rounded-xl p-5 sticky top-24">
+            <div className="card-static rounded-xl p-5 sticky top-24">
               <h3 className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-4">
                 Dataset Metadata
               </h3>
@@ -209,7 +209,7 @@ export default async function DatasetDetailPage({ params }: Props) {
                 <Link
                   key={d.id}
                   href={`/datasets/${d.slug}`}
-                  className="group card-base card-hover p-5 rounded-xl block"
+                  className="group card p-5 rounded-xl block"
                 >
                   <Badge variant={domainBadge[d.domain] ?? "muted"} size="sm" className="mb-3">
                     {d.domain}
