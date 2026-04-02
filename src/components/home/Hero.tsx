@@ -2,10 +2,17 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Database, GitBranch } from "lucide-react";
+import {
+  ArrowRight,
+  Database,
+  GitBranch,
+  Users,
+  Building2,
+  Download,
+} from "lucide-react";
 
 const fadeUp = {
-  hidden:  { opacity: 0, y: 24 },
+  hidden: { opacity: 0, y: 24 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
@@ -17,6 +24,13 @@ const fadeUp = {
   }),
 };
 
+const statIcons = [
+  { icon: Database, color: "from-violet-500 to-indigo-500" },
+  { icon: Users, color: "from-teal-500 to-emerald-500" },
+  { icon: Building2, color: "from-amber-500 to-orange-500" },
+  { icon: Download, color: "from-rose-500 to-pink-500" },
+];
+
 export function Hero() {
   return (
     <section className="relative min-h-svh flex items-center overflow-hidden bg-background">
@@ -25,7 +39,8 @@ export function Hero() {
         aria-hidden
         className="absolute inset-0 pointer-events-none opacity-20"
         style={{
-          backgroundImage: "radial-gradient(circle, #2D3748 1px, transparent 1px)",
+          backgroundImage:
+            "radial-gradient(circle, #2D3748 1px, transparent 1px)",
           backgroundSize: "24px 24px",
         }}
       />
@@ -33,21 +48,29 @@ export function Hero() {
       <div
         aria-hidden
         className="absolute -top-40 left-1/2 -translate-x-1/2 w-[800px] h-[600px] rounded-full blur-3xl pointer-events-none"
-        style={{ background: "radial-gradient(ellipse, rgba(99,102,241,0.12) 0%, transparent 70%)" }}
+        style={{
+          background:
+            "radial-gradient(ellipse, rgba(99,102,241,0.12) 0%, transparent 70%)",
+        }}
       />
       {/* Teal glow */}
       <div
         aria-hidden
         className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full blur-3xl pointer-events-none"
-        style={{ background: "radial-gradient(ellipse, rgba(45,212,191,0.07) 0%, transparent 70%)" }}
+        style={{
+          background:
+            "radial-gradient(ellipse, rgba(45,212,191,0.07) 0%, transparent 70%)",
+        }}
       />
 
       <div className="w-full max-w-7xl mx-auto px-6 relative pt-28 pb-24">
         <div className="max-w-4xl">
-
           {/* Eyebrow */}
           <motion.div
-            custom={0} initial="hidden" animate="visible" variants={fadeUp}
+            custom={0}
+            initial="hidden"
+            animate="visible"
+            variants={fadeUp}
             className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-border bg-surface text-xs font-medium text-muted-fg mb-8"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-teal animate-pulse" />
@@ -56,30 +79,39 @@ export function Hero() {
 
           {/* Headline */}
           <motion.h1
-            custom={1} initial="hidden" animate="visible" variants={fadeUp}
+            custom={1}
+            initial="hidden"
+            animate="visible"
+            variants={fadeUp}
             className="text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.08] text-foreground text-balance"
           >
             Building Pakistan&apos;s{" "}
-            <span
-              className="bg-linear-to-r from-accent via-indigo-400 to-teal bg-clip-text text-transparent"
-            >
+            <span className="bg-linear-to-r from-accent via-indigo-400 to-teal bg-clip-text text-transparent">
               ML Data
             </span>
-            <br />Infrastructure
+            <br />
+            Infrastructure
           </motion.h1>
 
           {/* Subheading */}
           <motion.p
-            custom={2} initial="hidden" animate="visible" variants={fadeUp}
+            custom={2}
+            initial="hidden"
+            animate="visible"
+            variants={fadeUp}
             className="mt-6 text-lg md:text-xl text-muted-fg max-w-2xl leading-relaxed"
           >
-            H2Vec centralizes open datasets, research publications, and community
-            tools to accelerate machine learning across Pakistan — from Karachi to Gilgit.
+            H2Vec centralizes open datasets, research publications, and
+            community tools to accelerate machine learning across Pakistan —
+            from Karachi to Gilgit.
           </motion.p>
 
           {/* CTAs */}
           <motion.div
-            custom={3} initial="hidden" animate="visible" variants={fadeUp}
+            custom={3}
+            initial="hidden"
+            animate="visible"
+            variants={fadeUp}
             className="mt-10 flex flex-wrap items-center gap-4"
           >
             <Link
@@ -100,12 +132,21 @@ export function Hero() {
 
           {/* Meta row */}
           <motion.div
-            custom={4} initial="hidden" animate="visible" variants={fadeUp}
+            custom={4}
+            initial="hidden"
+            animate="visible"
+            variants={fadeUp}
             className="mt-14 flex flex-wrap items-center gap-6 text-sm text-muted"
           >
-            <span className="flex items-center gap-2"><GitBranch className="w-4 h-4" />Open Source</span>
+            <span className="flex items-center gap-2">
+              <GitBranch className="w-4 h-4" />
+              Open Source
+            </span>
             <span className="w-px h-4 bg-border" />
-            <span className="flex items-center gap-2"><Database className="w-4 h-4" />240+ Datasets</span>
+            <span className="flex items-center gap-2">
+              <Database className="w-4 h-4" />
+              240+ Datasets
+            </span>
             <span className="w-px h-4 bg-border" />
             <span>CC-Licensed for Research</span>
           </motion.div>
@@ -113,20 +154,54 @@ export function Hero() {
 
         {/* Stats strip */}
         <motion.div
-          custom={5} initial="hidden" animate="visible" variants={fadeUp}
-          className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-3 max-w-3xl"
+          custom={5}
+          initial="hidden"
+          animate="visible"
+          variants={fadeUp}
+          className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl"
         >
           {[
-            { value: "240+",  label: "Datasets" },
-            { value: "580+",  label: "Researchers" },
-            { value: "38",    label: "Institutions" },
+            { value: "240+", label: "Datasets" },
+            { value: "580+", label: "Researchers" },
+            { value: "38", label: "Institutions" },
             { value: "1.2M+", label: "Downloads" },
-          ].map((stat) => (
-            <div key={stat.label} className="bg-surface border border-border rounded-xl p-4">
-              <div className="text-2xl font-semibold text-foreground tracking-tight">{stat.value}</div>
-              <div className="text-xs text-muted-fg mt-1">{stat.label}</div>
-            </div>
-          ))}
+          ].map((stat, i) => {
+            const Icon = statIcons[i].icon;
+            const gradient = statIcons[i].color;
+            return (
+              <div
+                key={stat.label}
+                className="group relative rounded-2xl p-5 bg-surface border border-border overflow-hidden hover:border-accent/50 transition-all duration-300"
+              >
+                {/* Gradient glow on hover */}
+                <div
+                  className={`absolute inset-0 bg-linear-to-br ${gradient} opacity-0 group-hover:opacity-[0.08] transition-opacity duration-300`}
+                />
+
+                {/* Icon badge */}
+                <div
+                  className={`inline-flex items-center justify-center w-9 h-9 rounded-lg bg-linear-to-br ${gradient} mb-3 shadow-lg`}
+                >
+                  <Icon className="w-4 h-4 text-white" />
+                </div>
+
+                {/* Value */}
+                <div className="text-3xl font-bold text-foreground tracking-tight">
+                  {stat.value}
+                </div>
+
+                {/* Label */}
+                <div className="text-xs font-medium text-muted-fg mt-1.5 uppercase tracking-wide">
+                  {stat.label}
+                </div>
+
+                {/* Subtle bottom accent */}
+                <div
+                  className={`absolute bottom-0 left-0 right-0 h-0.5 bg-linear-to-r ${gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
+                />
+              </div>
+            );
+          })}
         </motion.div>
       </div>
     </section>

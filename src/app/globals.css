@@ -12,26 +12,32 @@
   --font-mono: var(--font-geist-mono), "JetBrains Mono", monospace;
 
   /* --- Backgrounds --- */
-  --color-background:    #0B0F14;
-  --color-surface:       #111827;
-  --color-surface-raised: #1C2333;
+  --color-background: #0b0f14;
+  --color-surface: #111827;
+  --color-surface-raised: #1c2333;
 
   /* --- Borders --- */
-  --color-border:        #2D3748;
-  --color-border-subtle: #1E293B;
+  --color-border: #2d3748;
+  --color-border-subtle: #1e293b;
 
   /* --- Text --- */
-  --color-foreground:    #E2E8F0;
-  --color-muted:         #6B7280;
-  --color-muted-fg:      #9CA3AF;
+  --color-foreground: #e2e8f0;
+  --color-muted: #6b7280;
+  --color-muted-fg: #9ca3af;
 
   /* --- Accent (Indigo) --- */
-  --color-accent:        #6366F1;
-  --color-accent-hover:  #4F46E5;
-  --color-accent-fg:     #C7D2FE;
+  --color-accent: #6366f1;
+  --color-accent-hover: #4f46e5;
+  --color-accent-fg: #c7d2fe;
 
   /* --- Secondary (Teal) --- */
-  --color-teal:          #2DD4BF;
+  --color-teal: #2dd4bf;
+
+  /* --- Status Colors --- */
+  --color-success: #10b981;
+  --color-success-bg: rgba(16, 185, 129, 0.1);
+  --color-warning: #f59e0b;
+  --color-warning-bg: rgba(245, 158, 11, 0.1);
 }
 
 /* ============================================================
@@ -45,24 +51,68 @@ html {
 }
 
 body {
-  background-color: #0B0F14;
-  color: #E2E8F0;
+  background-color: #0b0f14;
+  color: #e2e8f0;
   font-family: var(--font-sans);
   min-height: 100svh;
 }
 
 /* Custom scrollbar */
-::-webkit-scrollbar        { width: 5px; height: 5px; }
-::-webkit-scrollbar-track  { background: #0B0F14; }
-::-webkit-scrollbar-thumb  { background: #2D3748; border-radius: 9999px; }
-::-webkit-scrollbar-thumb:hover { background: #6B7280; }
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #0b0f14;
+}
+::-webkit-scrollbar-thumb {
+  background: #2d3748;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
+}
 
 /* Selection */
-::selection { background: rgba(99, 102, 241, 0.25); color: #E2E8F0; }
+::selection {
+  background: rgba(99, 102, 241, 0.25);
+  color: #e2e8f0;
+}
 
 /* Focus ring */
 :focus-visible {
-  outline: 2px solid #6366F1;
+  outline: 2px solid #6366f1;
   outline-offset: 2px;
   border-radius: 4px;
+}
+
+/* ============================================================
+   UTILITY CLASSES
+   ============================================================ */
+
+/* Page container: consistent max-width and horizontal padding */
+.page-container {
+  width: 100%;
+  max-width: 80rem; /* 7xl = 80rem */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem; /* 6 */
+  padding-right: 1.5rem; /* 6 */
+}
+
+/* Section vertical padding: consistent spacing between sections */
+.section-py {
+  padding-top: 5rem; /* 20 */
+  padding-bottom: 5rem; /* 20 */
+}
+
+/* Static card: raised surface with border */
+.card-static {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  transition: border-color 0.15s ease;
+}
+
+.card-static:hover {
+  border-color: var(--color-accent);
 }

@@ -21,19 +21,19 @@ function MemberCard({ member, i }: { member: Member; i: number }) {
       <div className="flex items-start gap-4 mb-4">
         <Avatar name={member.name} size="lg" />
         <div className="flex-1 min-w-0">
-          <h3 className="font-semibold text-[var(--foreground)] leading-tight truncate">
+          <h3 className="font-semibold text-foreground leading-tight truncate">
             {member.name}
           </h3>
-          <p className="text-sm text-[var(--accent-fg)] mt-0.5 truncate">
+          <p className="text-sm text-accent-fg mt-0.5 truncate">
             {member.role}
           </p>
-          <p className="text-xs text-[var(--muted)] mt-0.5 truncate">
+          <p className="text-xs text-muted mt-0.5 truncate">
             {member.institution}
           </p>
         </div>
       </div>
 
-      <p className="text-sm text-[var(--muted-fg)] leading-relaxed line-clamp-3 mb-4">
+      <p className="text-sm text-muted-fg leading-relaxed line-clamp-3 mb-4">
         {member.bio}
       </p>
 
@@ -45,14 +45,14 @@ function MemberCard({ member, i }: { member: Member; i: number }) {
         ))}
       </div>
 
-      <div className="mt-auto pt-4 border-t border-[var(--border-subtle)] flex items-center gap-2">
+      <div className="mt-auto pt-4 border-t border-border-subtle flex items-center gap-2">
         {member.github && (
           <a
             href={`https://github.com/${member.github}`}
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`${member.name} GitHub`}
-            className="p-1.5 rounded-md text-[var(--muted)] hover:text-[var(--foreground)] hover:bg-[var(--surface-raised)] transition-colors"
+            className="p-1.5 rounded-md text-muted hover:text-foreground hover:bg-surface-raised transition-colors"
           >
             <GitBranch className="w-4 h-4" />
           </a>
@@ -74,7 +74,7 @@ function MemberCard({ member, i }: { member: Member; i: number }) {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`${member.name} Google Scholar`}
-            className="p-1.5 rounded-md text-[var(--muted)] hover:text-[var(--foreground)] hover:bg-[var(--surface-raised)] transition-colors"
+            className="p-1.5 rounded-md text-muted hover:text-foreground hover:bg-surface-raised transition-colors"
           >
             <BookOpen className="w-4 h-4" />
           </a>
@@ -90,9 +90,9 @@ const collaborators = members.filter((m) => m.type === "collaborator");
 
 export default function MembersPage() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background">
       {/* Hero */}
-      <div className="border-b border-[var(--border)] bg-[var(--surface)]">
+      <div className="border-b border-border bg-surface">
         <div className="page-container pt-28 pb-14">
           <SectionHeader
             align="left"
@@ -107,15 +107,15 @@ export default function MembersPage() {
       <section className="section-py">
         <div className="page-container">
           <div className="max-w-3xl mx-auto text-center">
-            <p className="text-xs font-semibold tracking-widest uppercase text-[var(--accent)] mb-4">
+            <p className="text-xs font-semibold tracking-widest uppercase text-accent mb-4">
               Our Mission
             </p>
-            <blockquote className="text-2xl md:text-3xl font-semibold text-[var(--foreground)] tracking-tight leading-snug text-balance mb-6">
-              "To democratize machine learning in Pakistan by providing the data
-              infrastructure, research tools, and community support that
-              researchers need."
+            <blockquote className="text-2xl md:text-3xl font-semibold text-foreground tracking-tight leading-snug text-balance mb-6">
+              &quot;To democratize machine learning in Pakistan by providing the
+              data infrastructure, research tools, and community support that
+              researchers need.&quot;
             </blockquote>
-            <p className="text-[var(--muted-fg)] leading-relaxed">
+            <p className="text-muted-fg leading-relaxed">
               H2Vec was founded in 2022 by researchers frustrated with the lack
               of quality, open datasets for Pakistani languages and domains.
               Today, we are a distributed team of 50+ researchers, engineers,
@@ -126,7 +126,7 @@ export default function MembersPage() {
       </section>
 
       {/* Founders */}
-      <section className="section-py bg-[var(--surface)] border-t border-[var(--border)]">
+      <section className="section-py bg-surface border-t border-border">
         <div className="page-container">
           <SectionHeader
             align="left"
@@ -143,7 +143,7 @@ export default function MembersPage() {
       </section>
 
       {/* Core Team */}
-      <section className="section-py border-t border-[var(--border)]">
+      <section className="section-py border-t border-border">
         <div className="page-container">
           <SectionHeader
             align="left"
@@ -160,7 +160,7 @@ export default function MembersPage() {
       </section>
 
       {/* Collaborators */}
-      <section className="section-py bg-[var(--surface)] border-t border-[var(--border)]">
+      <section className="section-py bg-surface border-t border-border">
         <div className="page-container">
           <SectionHeader
             align="left"
@@ -178,16 +178,16 @@ export default function MembersPage() {
       </section>
 
       {/* Join CTA */}
-      <section className="section-py border-t border-[var(--border)]">
+      <section className="section-py border-t border-border">
         <div className="page-container">
           <div className="card-static rounded-2xl p-10 md:p-14 text-center max-w-2xl mx-auto">
-            <p className="text-xs font-semibold tracking-widest uppercase text-[var(--accent)] mb-3">
+            <p className="text-xs font-semibold tracking-widest uppercase text-accent mb-3">
               Open Positions
             </p>
-            <h2 className="text-3xl font-semibold text-[var(--foreground)] tracking-tight mb-4 text-balance">
+            <h2 className="text-3xl font-semibold text-foreground tracking-tight mb-4 text-balance">
               Join the H2Vec Team
             </h2>
-            <p className="text-[var(--muted-fg)] leading-relaxed mb-8">
+            <p className="text-muted-fg leading-relaxed mb-8">
               We&apos;re always looking for researchers, engineers, and
               community builders passionate about advancing ML in Pakistan. All
               positions are open to remote contributors.
@@ -195,14 +195,14 @@ export default function MembersPage() {
             <div className="flex flex-wrap justify-center gap-4">
               <Link
                 href="/outreach"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[var(--accent)] text-white font-medium text-sm hover:bg-[var(--accent-hover)] transition-colors"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-accent text-white font-medium text-sm hover:bg-accent-hover transition-colors"
               >
                 Get Involved
                 <ExternalLink className="w-4 h-4" />
               </Link>
               <a
                 href={`mailto:hello@h2vec.pk`}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-[var(--border)] text-[var(--foreground)] font-medium text-sm hover:bg-[var(--surface)] hover:border-[var(--muted)] transition-colors"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-border text-foreground font-medium text-sm hover:bg-surface hover:border-muted transition-colors"
               >
                 Contact Us
               </a>
