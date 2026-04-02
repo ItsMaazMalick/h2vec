@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Database, GitBranch } from "lucide-react";
 
 const fadeUp = {
-  hidden:  { opacity: 0, y: 24 },
+  hidden: { opacity: 0, y: 24 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
@@ -37,7 +37,7 @@ export function Hero() {
             custom={0}
             initial="hidden"
             animate="visible"
-            variants={fadeUp}
+            // variants={fadeUp}
             className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--border)] bg-[var(--surface)] text-xs font-medium text-[var(--muted-fg)] mb-6"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-[var(--teal)] animate-pulse" />
@@ -49,7 +49,7 @@ export function Hero() {
             custom={1}
             initial="hidden"
             animate="visible"
-            variants={fadeUp}
+            // variants={fadeUp}
             className="text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-balance leading-[1.1]"
           >
             Building Pakistan&apos;s{" "}
@@ -63,11 +63,12 @@ export function Hero() {
             custom={2}
             initial="hidden"
             animate="visible"
-            variants={fadeUp}
+            // variants={fadeUp}
             className="mt-6 text-lg md:text-xl text-[var(--muted-fg)] max-w-2xl leading-relaxed text-balance"
           >
-            H2Vec centralizes open datasets, research publications, and community tools
-            to accelerate machine learning across Pakistan — from Karachi to Gilgit.
+            H2Vec centralizes open datasets, research publications, and
+            community tools to accelerate machine learning across Pakistan —
+            from Karachi to Gilgit.
           </motion.p>
 
           {/* CTAs */}
@@ -75,7 +76,7 @@ export function Hero() {
             custom={3}
             initial="hidden"
             animate="visible"
-            variants={fadeUp}
+            // variants={fadeUp}
             className="mt-10 flex flex-wrap items-center gap-4"
           >
             <Link
@@ -99,7 +100,7 @@ export function Hero() {
             custom={4}
             initial="hidden"
             animate="visible"
-            variants={fadeUp}
+            // variants={fadeUp}
             className="mt-14 flex flex-wrap items-center gap-6 text-sm text-[var(--muted)]"
           >
             <div className="flex items-center gap-2">
@@ -121,23 +122,22 @@ export function Hero() {
           custom={5}
           initial="hidden"
           animate="visible"
-          variants={fadeUp}
+          // variants={fadeUp}
           className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-3 max-w-3xl"
         >
           {[
-            { value: "240+",  label: "Datasets" },
-            { value: "580+",  label: "Researchers" },
-            { value: "38",    label: "Institutions" },
+            { value: "240+", label: "Datasets" },
+            { value: "580+", label: "Researchers" },
+            { value: "38", label: "Institutions" },
             { value: "1.2M+", label: "Downloads" },
           ].map((stat) => (
-            <div
-              key={stat.label}
-              className="card-base p-4 rounded-xl"
-            >
+            <div key={stat.label} className="card-base p-4 rounded-xl">
               <div className="text-2xl font-semibold text-[var(--foreground)] tracking-tight">
                 {stat.value}
               </div>
-              <div className="text-xs text-[var(--muted-fg)] mt-1">{stat.label}</div>
+              <div className="text-xs text-[var(--muted-fg)] mt-1">
+                {stat.label}
+              </div>
             </div>
           ))}
         </motion.div>

@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Github, Linkedin, BookOpen, ExternalLink } from "lucide-react";
+import { GitBranch, BookOpen, ExternalLink } from "lucide-react";
 import { members } from "@/data/members";
 import { Badge } from "@/components/ui/Badge";
 import { Avatar } from "@/components/ui/Avatar";
@@ -24,8 +24,12 @@ function MemberCard({ member, i }: { member: Member; i: number }) {
           <h3 className="font-semibold text-[var(--foreground)] leading-tight truncate">
             {member.name}
           </h3>
-          <p className="text-sm text-[var(--accent-fg)] mt-0.5 truncate">{member.role}</p>
-          <p className="text-xs text-[var(--muted)] mt-0.5 truncate">{member.institution}</p>
+          <p className="text-sm text-[var(--accent-fg)] mt-0.5 truncate">
+            {member.role}
+          </p>
+          <p className="text-xs text-[var(--muted)] mt-0.5 truncate">
+            {member.institution}
+          </p>
         </div>
       </div>
 
@@ -50,10 +54,10 @@ function MemberCard({ member, i }: { member: Member; i: number }) {
             aria-label={`${member.name} GitHub`}
             className="p-1.5 rounded-md text-[var(--muted)] hover:text-[var(--foreground)] hover:bg-[var(--surface-raised)] transition-colors"
           >
-            <Github className="w-4 h-4" />
+            <GitBranch className="w-4 h-4" />
           </a>
         )}
-        {member.linkedin && (
+        {/* {member.linkedin && (
           <a
             href={`https://linkedin.com/in/${member.linkedin}`}
             target="_blank"
@@ -63,7 +67,7 @@ function MemberCard({ member, i }: { member: Member; i: number }) {
           >
             <Linkedin className="w-4 h-4" />
           </a>
-        )}
+        )} */}
         {member.scholar && (
           <a
             href={`https://scholar.google.com/citations?user=${member.scholar}`}
@@ -80,8 +84,8 @@ function MemberCard({ member, i }: { member: Member; i: number }) {
   );
 }
 
-const founders    = members.filter((m) => m.type === "founder");
-const core        = members.filter((m) => m.type === "core");
+const founders = members.filter((m) => m.type === "founder");
+const core = members.filter((m) => m.type === "core");
 const collaborators = members.filter((m) => m.type === "collaborator");
 
 export default function MembersPage() {
@@ -107,10 +111,15 @@ export default function MembersPage() {
               Our Mission
             </p>
             <blockquote className="text-2xl md:text-3xl font-semibold text-[var(--foreground)] tracking-tight leading-snug text-balance mb-6">
-              "To democratize machine learning in Pakistan by providing the data infrastructure, research tools, and community support that researchers need."
+              "To democratize machine learning in Pakistan by providing the data
+              infrastructure, research tools, and community support that
+              researchers need."
             </blockquote>
             <p className="text-[var(--muted-fg)] leading-relaxed">
-              H2Vec was founded in 2022 by researchers frustrated with the lack of quality, open datasets for Pakistani languages and domains. Today, we are a distributed team of 50+ researchers, engineers, and educators working across 8 cities.
+              H2Vec was founded in 2022 by researchers frustrated with the lack
+              of quality, open datasets for Pakistani languages and domains.
+              Today, we are a distributed team of 50+ researchers, engineers,
+              and educators working across 8 cities.
             </p>
           </div>
         </div>
@@ -179,7 +188,9 @@ export default function MembersPage() {
               Join the H2Vec Team
             </h2>
             <p className="text-[var(--muted-fg)] leading-relaxed mb-8">
-              We&apos;re always looking for researchers, engineers, and community builders passionate about advancing ML in Pakistan. All positions are open to remote contributors.
+              We&apos;re always looking for researchers, engineers, and
+              community builders passionate about advancing ML in Pakistan. All
+              positions are open to remote contributors.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link
