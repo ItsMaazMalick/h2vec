@@ -8,7 +8,12 @@ export type DatasetDomain =
   | "Agriculture"
   | "Finance";
 
-export type DatasetLicense = "MIT" | "CC BY 4.0" | "CC BY-SA 4.0" | "Apache 2.0" | "Custom";
+export type DatasetLicense =
+  | "MIT"
+  | "CC BY 4.0"
+  | "CC BY-SA 4.0"
+  | "Apache 2.0"
+  | "Custom";
 
 export interface Dataset {
   id: string;
@@ -68,7 +73,12 @@ export const datasets: Dataset[] = [
     description:
       "34K high-resolution field images of major Pakistani crops (wheat, rice, sugarcane, cotton) labeled with 28 disease categories. Captured across 6 provinces under varying seasonal conditions.",
     domain: "Computer Vision",
-    tags: ["agriculture", "disease-detection", "object-detection", "classification"],
+    tags: [
+      "agriculture",
+      "disease-detection",
+      "object-detection",
+      "classification",
+    ],
     size: 12_800_000_000,
     sizeLabel: "12.8 GB",
     records: 34_000,
@@ -224,6 +234,36 @@ export const datasets: Dataset[] = [
     updatedAt: "2024-12-01",
     downloads: 3970,
     featured: false,
+  },
+  {
+    id: "ds-009",
+    slug: "multi-modal-giant",
+    name: "Multi-modal Giant Dataset",
+    description:
+      "A comprehensive multi-modal dataset containing 500K aligned samples across text, image, audio, and video modalities. Covers diverse Pakistani contexts including urban/rural scenes, multilingual content (Urdu, English, regional languages), and varied environmental conditions. Designed for training and evaluating large multi-modal models.",
+    domain: "Multimodal",
+    tags: [
+      "multi-modal",
+      "large-scale",
+      "vision-language",
+      "audio-video",
+      "foundation-models",
+    ],
+    size: 245_000_000_000,
+    sizeLabel: "245 GB",
+    records: 500_000,
+    recordsLabel: "500K",
+    format: ["JSON", "Parquet", "MP4", "WAV", "PNG"],
+    source: "H2Vec Consortium + Partner Institutions",
+    license: "CC BY 4.0",
+    version: "1.0.0",
+    authors: ["H2Vec Research Team", "Dr. Ayesha Tariq", "Dr. Faisal Shafait"],
+    institution: "H2Vec",
+    publishedAt: "2025-03-15",
+    updatedAt: "2025-03-15",
+    downloads: 0,
+    featured: true,
+    doi: "10.5281/h2vec.009",
   },
 ];
 

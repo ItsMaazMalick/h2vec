@@ -12,26 +12,26 @@
   --font-mono: var(--font-geist-mono), "JetBrains Mono", monospace;
 
   /* --- Backgrounds --- */
-  --color-background: #0b0f14;
-  --color-surface: #111827;
-  --color-surface-raised: #1c2333;
+  --color-background: #030712;
+  --color-surface: #0a0f1a;
+  --color-surface-raised: #111827;
 
   /* --- Borders --- */
-  --color-border: #2d3748;
-  --color-border-subtle: #1e293b;
+  --color-border: #1e293b;
+  --color-border-subtle: #151c2c;
 
   /* --- Text --- */
-  --color-foreground: #e2e8f0;
-  --color-muted: #6b7280;
-  --color-muted-fg: #9ca3af;
+  --color-foreground: #f8fafc;
+  --color-muted: #64748b;
+  --color-muted-fg: #94a3b8;
 
-  /* --- Accent (Indigo) --- */
-  --color-accent: #6366f1;
-  --color-accent-hover: #4f46e5;
-  --color-accent-fg: #c7d2fe;
+  /* --- Accent (Electric Violet) --- */
+  --color-accent: #7c3aed;
+  --color-accent-hover: #6d28d9;
+  --color-accent-fg: #ede9fe;
 
-  /* --- Secondary (Teal) --- */
-  --color-teal: #2dd4bf;
+  /* --- Secondary (Electric Cyan) --- */
+  --color-teal: #06b6d4;
 
   /* --- Status Colors --- */
   --color-success: #10b981;
@@ -51,10 +51,21 @@ html {
 }
 
 body {
-  background-color: #0b0f14;
-  color: #e2e8f0;
+  background-color: #030712;
+  color: #f8fafc;
   font-family: var(--font-sans);
   min-height: 100svh;
+}
+
+/* Noise texture overlay */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  opacity: 0.015;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  z-index: 9999;
 }
 
 /* Custom scrollbar */
@@ -63,25 +74,25 @@ body {
   height: 5px;
 }
 ::-webkit-scrollbar-track {
-  background: #0b0f14;
+  background: #030712;
 }
 ::-webkit-scrollbar-thumb {
-  background: #2d3748;
+  background: #1e293b;
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #6b7280;
+  background: #64748b;
 }
 
 /* Selection */
 ::selection {
-  background: rgba(99, 102, 241, 0.25);
-  color: #e2e8f0;
+  background: rgba(124, 58, 237, 0.35);
+  color: #f8fafc;
 }
 
 /* Focus ring */
 :focus-visible {
-  outline: 2px solid #6366f1;
+  outline: 2px solid #7c3aed;
   outline-offset: 2px;
   border-radius: 4px;
 }
